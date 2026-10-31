@@ -1,0 +1,25 @@
+# This project has no dependencies and no build step. Anything below is
+# something that wandered in from an editor, an OS, or a local experiment.
+
+# Local copies with a real PIN in them — never commit one
+system-info.local.php
+*.local.php
+
+# Editors and OS
+.idea/
+.vscode/
+*.swp
+*~
+.DS_Store
+Thumbs.db
+
+# Anything a tool might drop here despite the above
+vendor/
+composer.lock
+node_modules/
+.phpunit.result.cache
+
+# Reports generated from the command line
+*.report.md
+report.md
+report.json

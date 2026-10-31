@@ -1,0 +1,18 @@
+# Normalise line endings so a Windows contributor doesn't reformat the file.
+* text=auto eol=lf
+
+*.png binary
+
+# Kept out of GitHub's "Source code" archives (made with `git archive`, which
+# honours this attribute): the file and its licence only.
+# Everything here stays in the repository; bin/lint.sh checks the result.
+.github/          export-ignore
+.gitattributes    export-ignore
+.gitignore        export-ignore
+.editorconfig     export-ignore
+bin/              export-ignore
+screenshots/      export-ignore
+/README.md        export-ignore
+/CHANGELOG.md     export-ignore
+/CONTRIBUTING.md  export-ignore
+/SECURITY.md      export-ignore

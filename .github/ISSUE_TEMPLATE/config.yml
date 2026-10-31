@@ -1,0 +1,5 @@
+blank_issues_enabled: true
+contact_links:
+  - name: A check told me something I disagree with
+    url: https://github.com/SalvatoreNoschese/system-info.php/discussions
+    about: Findings are opinions about consequences. Argue with them here.

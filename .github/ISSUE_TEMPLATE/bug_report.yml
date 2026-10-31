@@ -1,0 +1,36 @@
+name: Something is wrong in the report
+description: A value is missing, misread, or a section did not render
+labels: [bug]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        The page has a **Copy JSON** button at the top. Pasting that in gives
+        the PHP version, the web server, the SAPI and the whole report at once,
+        which is usually the entire answer. Delete anything from it you would
+        rather not publish — paths and hostnames are in there.
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: What should the page have said?
+      placeholder: "The disk card shows 0 B free, but df says 40 GB."
+    validations:
+      required: true
+
+  - type: textarea
+    id: report
+    attributes:
+      label: The JSON export
+      description: From the Copy JSON button, or `php system-info.php`.
+      render: json
+    validations:
+      required: false
+
+  - type: input
+    id: host
+    attributes:
+      label: Where is this running?
+      placeholder: "Shared hosting (Altervista), cPanel, a VPS you manage, Docker…"
+    validations:
+      required: false

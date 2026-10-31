@@ -1,0 +1,39 @@
+name: Lint
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+# Actions are pinned to a commit, not a tag: a tag can be moved to other code.
+# The comment names the release; update both together.
+
+jobs:
+  lint:
+    name: PHP ${{ matrix.php }}
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        # 8.0 is the floor the file promises. Every version above it has to
+        # parse the same source, which is the whole point of avoiding newer
+        # syntax in a file people drop onto servers they did not choose.
+        php: ['8.0', '8.1', '8.2', '8.3', '8.4', '8.5']
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          # Nothing here pushes; the token need not stay in .git/config.
+          persist-credentials: false
+
+      - uses: shivammathur/setup-php@eb7c497e18156a6bbabfef1d3a82760b9eda3962 # 2.40.0
+        with:
+          php-version: ${{ matrix.php }}
+          coverage: none
+
+      # The same script run before publishing, so CI and the laptop cannot
+      # disagree about what passing means.
+      - run: bash bin/lint.sh
